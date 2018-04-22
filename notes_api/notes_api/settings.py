@@ -10,7 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+import logging
 import os
+
+from django.utils.log import DEFAULT_LOGGING
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -123,3 +126,54 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'http://localhost:8088/'
+
+LOGLEVEL = os.environ.get('LOGLEVEL', 'info').upper()
+logging.config.dictConfig({
+    'version': 1,
+    'disable_existing_loggers': False,
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+        'django.server': DEFAULT_LOGGING['formatters']['django.server'],
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'filters': ['require_debug_false'],
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'django.server': DEFAULT_LOGGING['handlers']['django.server'],
+    },
+    'loggers': {
+        'django.server': DEFAULT_LOGGING['loggers']['django.server'],
+        'django.request': {
+            'handlers': ['console'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+        '': {
+            'level': 'DEBUG',
+            'handlers': ['console'],
+        },
+        'notes': {
+            'level': LOGLEVEL,
+            'handlers': ['console'],
+            # required to avoid double logging with root logger
+            'propagate': False,
+        },
+    },
+})

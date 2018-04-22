@@ -16,7 +16,7 @@ migrate:
 versionate:
 	python manage.py createinitialrevisions
 
-su:
+su: migrate
 	python manage.py createsuperuser
 
 process_static:
