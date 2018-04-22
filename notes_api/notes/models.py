@@ -18,7 +18,6 @@ class Tag(models.Model):
 class Note(models.Model):
     owner = models.ForeignKey('auth.User', related_name='notes', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
-    uri = models.URLField()
     name = models.CharField(max_length=200, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag,
@@ -28,13 +27,11 @@ class Note(models.Model):
 
     class Meta:
         ordering = ('-created',)
-        unique_together = (('owner', 'uri'),)
-        index_together = [['owner', 'uri'],
-                          ['owner', 'name'],
-                          ['owner', 'created']]
+        unique_together = (('owner', 'name'),)
+        index_together = [['owner', 'created'], ]
 
     def __str__(self):
-        return self.name or self.url
+        return self.name
 
 
 class NoteTag(models.Model):
