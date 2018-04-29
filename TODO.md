@@ -1,3 +1,2 @@
-- Add django-reversion support for all models (data versioning)
+- Adicionar suporte a UUIDs nos models.
 - Add django-markdownx to allow Markdown on model Note.content. 
-

@@ -10,25 +10,33 @@ class NoteTagInline(admin.TabularInline):
     extra = 1
 
 
+class VersionAdminWithOwnerAutofill(VersionAdmin):
+    def get_changeform_initial_data(self, request):
+        get_data = super().get_changeform_initial_data(request)
+        get_data['owner'] = request.user.pk
+        return get_data
+
+
 @admin.register(Tag)
-class TagAdmin(VersionAdmin):
+class TagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
     list_filter = ('created', ('created', DateRangeFilter), )
-    search_fields = ('created', 'name',)
+    search_fields = ('created', 'name', )
 
 
 @admin.register(Note)
-class NoteAdmin(VersionAdmin):
+class NoteAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
-    inlines = [NoteTagInline,]
+    inlines = [NoteTagInline, ]
     list_filter = ('created', ('created', DateRangeFilter), )
-    search_fields = ('created', 'name', 'content', 'tags__name',)
+    search_fields = ('created', 'name', 'content', 'tags__name', )
+
 
 
 @admin.register(NoteTag)
-class NoteTagAdmin(VersionAdmin):
+class NoteTagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
     list_filter = ('created', ('created', DateRangeFilter), )
