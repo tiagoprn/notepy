@@ -21,6 +21,7 @@ class VersionAdminWithOwnerAutofill(VersionAdmin):
 class TagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
+    list_display = ['name', 'created']
     list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'name', )
 
@@ -30,6 +31,8 @@ class NoteAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
     inlines = [NoteTagInline, ]
+
+    list_display = ['name', 'created']
     list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'name', 'content', 'tags__name', )
 
@@ -39,5 +42,6 @@ class NoteAdmin(VersionAdminWithOwnerAutofill):
 class NoteTagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
+    list_display = ['__str__', 'created']
     list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'note__name', 'tag__name',)
