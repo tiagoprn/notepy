@@ -2,4 +2,5 @@ django
 django-reversion
 django-markdownx
 djangorestframework
+django-admin-rangefilter
 

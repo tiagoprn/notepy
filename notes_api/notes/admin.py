@@ -1,4 +1,5 @@
 from django.contrib import admin
+from rangefilter.filter import DateRangeFilter
 from reversion.admin import VersionAdmin
 
 from .models import Tag, Note, NoteTag
@@ -14,7 +15,7 @@ class TagAdmin(VersionAdmin):
     actions_on_top = True
     actions_on_bottom = True
 
-    list_filter = ('created', )
+    list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'name',)
 
 
@@ -24,7 +25,7 @@ class NoteAdmin(VersionAdmin):
     actions_on_bottom = True
 
     inlines = [NoteTagInline,]
-    list_filter = ('created', )
+    list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'name', 'content', 'tags__name',)
 
 
@@ -33,5 +34,5 @@ class NoteTagAdmin(VersionAdmin):
     actions_on_top = True
     actions_on_bottom = True
 
-    list_filter = ('created', )
+    list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'note__name', 'tag__name',)
