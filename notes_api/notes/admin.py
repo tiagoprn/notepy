@@ -4,6 +4,11 @@ from reversion.admin import VersionAdmin
 from .models import Tag, Note, NoteTag
 
 
+class NoteTagInline(admin.TabularInline):
+    model = Note.tags.through
+    extra = 1
+
+
 @admin.register(Tag)
 class TagAdmin(VersionAdmin):
     actions_on_top = True
@@ -17,6 +22,7 @@ class NoteAdmin(VersionAdmin):
     actions_on_top = True
     actions_on_bottom = True
 
+    inlines = [NoteTagInline,]
     list_filter = ('created', 'name', 'content', 'tags')
 
 
