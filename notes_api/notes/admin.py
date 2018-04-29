@@ -12,8 +12,7 @@ class NoteTagInline(admin.TabularInline):
 
 @admin.register(Tag)
 class TagAdmin(VersionAdmin):
-    actions_on_top = True
-    actions_on_bottom = True
+    list_per_page = 10
 
     list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'name',)
@@ -21,8 +20,7 @@ class TagAdmin(VersionAdmin):
 
 @admin.register(Note)
 class NoteAdmin(VersionAdmin):
-    actions_on_top = True
-    actions_on_bottom = True
+    list_per_page = 10
 
     inlines = [NoteTagInline,]
     list_filter = ('created', ('created', DateRangeFilter), )
@@ -31,8 +29,7 @@ class NoteAdmin(VersionAdmin):
 
 @admin.register(NoteTag)
 class NoteTagAdmin(VersionAdmin):
-    actions_on_top = True
-    actions_on_bottom = True
+    list_per_page = 10
 
     list_filter = ('created', ('created', DateRangeFilter), )
     search_fields = ('created', 'note__name', 'tag__name',)
