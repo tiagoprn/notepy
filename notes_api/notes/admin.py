@@ -6,12 +6,18 @@ from .models import Tag, Note, NoteTag
 
 @admin.register(Tag)
 class TagAdmin(VersionAdmin):
-    pass
+    actions_on_top = True
+    actions_on_bottom = True
+
+    list_filter = ('created', 'name')
 
 
 @admin.register(Note)
 class NoteAdmin(VersionAdmin):
-    pass
+    actions_on_top = True
+    actions_on_bottom = True
+
+    list_filter = ('created', 'name', 'content', 'tags')
 
 
 @admin.register(NoteTag)
