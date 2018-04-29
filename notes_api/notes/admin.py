@@ -28,4 +28,7 @@ class NoteAdmin(VersionAdmin):
 
 @admin.register(NoteTag)
 class NoteTagAdmin(VersionAdmin):
-    pass
+    actions_on_top = True
+    actions_on_bottom = True
+
+    list_filter = ('created', 'note__name', 'tag__name')
