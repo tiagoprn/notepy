@@ -14,7 +14,8 @@ class TagAdmin(VersionAdmin):
     actions_on_top = True
     actions_on_bottom = True
 
-    list_filter = ('created', 'name')
+    list_filter = ('created', )
+    search_fields = ('created', 'name',)
 
 
 @admin.register(Note)
@@ -23,7 +24,8 @@ class NoteAdmin(VersionAdmin):
     actions_on_bottom = True
 
     inlines = [NoteTagInline,]
-    list_filter = ('created', 'name', 'content', 'tags')
+    list_filter = ('created', )
+    search_fields = ('created', 'name', 'content', 'tags__name',)
 
 
 @admin.register(NoteTag)
@@ -31,4 +33,5 @@ class NoteTagAdmin(VersionAdmin):
     actions_on_top = True
     actions_on_bottom = True
 
-    list_filter = ('created', 'note__name', 'tag__name')
+    list_filter = ('created', )
+    search_fields = ('created', 'note__name', 'tag__name',)
