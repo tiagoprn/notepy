@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Tag(models.Model):
+    uuid = models.UUIDField(primary_key=True)
     owner = models.ForeignKey('auth.User', related_name='tags', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -17,6 +18,7 @@ class Tag(models.Model):
 
 
 class Note(models.Model):
+    uuid = models.UUIDField(primary_key=True)
     owner = models.ForeignKey('auth.User', related_name='notes', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -37,6 +39,7 @@ class Note(models.Model):
 
 
 class NoteTag(models.Model):
+    uuid = models.UUIDField(primary_key=True)
     note = models.ForeignKey(Note, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)

@@ -1,3 +1,2 @@
-- Adicionar um campo updated em todos os models, e alterar no admin.py também.
 - Adicionar suporte a UUIDs nos models.
 - Add django-markdownx to allow Markdown on model Note.content. 
