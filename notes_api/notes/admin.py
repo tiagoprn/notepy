@@ -12,6 +12,8 @@ class NoteTagInline(admin.TabularInline):
 
 
 class VersionAdminWithOwnerAutofill(VersionAdmin):
+    history_latest_first = True
+
     def get_changeform_initial_data(self, request):
         get_data = super().get_changeform_initial_data(request)
         get_data['owner'] = request.user.pk
