@@ -35,13 +35,3 @@ class NoteAdmin(VersionAdminWithOwnerAutofill):
     list_display = ['name', 'display_tags', 'uuid', 'created']
     list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
     search_fields = ('uuid', 'created', 'name', 'content', 'tags__name', )
-
-
-
-@admin.register(NoteTag)
-class NoteTagAdmin(VersionAdminWithOwnerAutofill):
-    list_per_page = 10
-
-    list_display = ['__str__', 'uuid', 'created']
-    list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
-    search_fields = ('uuid', 'created', 'note__name', 'tag__name',)
