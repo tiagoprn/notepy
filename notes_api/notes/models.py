@@ -4,6 +4,7 @@ from django.db import models
 class Tag(models.Model):
     owner = models.ForeignKey('auth.User', related_name='tags', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200)
 
     class Meta:
@@ -18,6 +19,7 @@ class Tag(models.Model):
 class Note(models.Model):
     owner = models.ForeignKey('auth.User', related_name='notes', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     content = models.TextField(blank=True, null=True)
     tags = models.ManyToManyField(Tag,
@@ -38,6 +40,7 @@ class NoteTag(models.Model):
     note = models.ForeignKey(Note, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return 'Link: {}, Tag: {}'.format(self.note.name, self.tag.name)
