@@ -21,9 +21,9 @@ class VersionAdminWithOwnerAutofill(VersionAdmin):
 class TagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
-    list_display = ['name', 'created']
-    list_filter = ('created', ('created', DateRangeFilter), )
-    search_fields = ('created', 'name', )
+    list_display = ['name', 'uuid', 'created']
+    list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
+    search_fields = ('uuid', 'created', 'name', )
 
 
 @admin.register(Note)
@@ -32,9 +32,9 @@ class NoteAdmin(VersionAdminWithOwnerAutofill):
 
     inlines = [NoteTagInline, ]
 
-    list_display = ['name', 'created']
-    list_filter = ('created', ('created', DateRangeFilter), )
-    search_fields = ('created', 'name', 'content', 'tags__name', )
+    list_display = ['name', 'display_tags', 'uuid', 'created']
+    list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
+    search_fields = ('uuid', 'created', 'name', 'content', 'tags__name', )
 
 
 
@@ -42,6 +42,6 @@ class NoteAdmin(VersionAdminWithOwnerAutofill):
 class NoteTagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
-    list_display = ['__str__', 'created']
-    list_filter = ('created', ('created', DateRangeFilter), )
-    search_fields = ('created', 'note__name', 'tag__name',)
+    list_display = ['__str__', 'uuid', 'created']
+    list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
+    search_fields = ('uuid', 'created', 'note__name', 'tag__name',)
