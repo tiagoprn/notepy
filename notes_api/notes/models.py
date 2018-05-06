@@ -1,6 +1,8 @@
 import uuid
 
 from django.db import models
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 
 class Tag(models.Model):
@@ -49,9 +51,17 @@ class Note(models.Model):
 
         That is because it does not allow ManyToMany fields on list_display.
         """
-        return ', '.join([tag.name for tag in self.tags.all()]) \
-            if self.tags.all() else 'N/A'
-    display_tags.short_description = 'Tags'
+        tags = self.tags.all()
+        result = ''
+        if not tags:
+            result = 'N/A'
+        else:
+            for tag in tags:
+                url = reverse("admin:notes_tag_change", args=(tag.uuid, ))
+                html = f'<a href={url}>{tag.name}</a>'
+                result += f', {html}' if result else f'{html}'
+        return mark_safe(result)
+    display_tags.short_description = 'TAGS'
     display_tags.allow_tags = True
 
 
