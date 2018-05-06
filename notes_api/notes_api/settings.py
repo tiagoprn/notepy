@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rangefilter',
     'reversion',
     'rest_framework',
+    'markdownx',
     'notes.apps.NotesConfig'
 ]
 
@@ -76,6 +77,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'notes_api.wsgi.application'
 
+# Markdown extensions (https://python-markdown.github.io/extensions/)
+MARKDOWNX_MARKDOWN_EXTENSIONS = [
+    'markdown.extensions.sane_lists',
+    'markdown.extensions.nl2br',
+    'markdown.extensions.extra',
+    'markdown.extensions.codehilite',
+    'markdown.extensions.smarty',
+    'markdown.extensions.toc',
+]
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

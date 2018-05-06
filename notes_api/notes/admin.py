@@ -1,4 +1,5 @@
 from django.contrib import admin
+from markdownx.admin import MarkdownxModelAdmin
 from rangefilter.filter import DateRangeFilter
 from reversion.admin import VersionAdmin
 
@@ -27,7 +28,7 @@ class TagAdmin(VersionAdminWithOwnerAutofill):
 
 
 @admin.register(Note)
-class NoteAdmin(VersionAdminWithOwnerAutofill):
+class NoteAdmin(VersionAdminWithOwnerAutofill, MarkdownxModelAdmin):
     list_per_page = 10
 
     inlines = [NoteTagInline, ]

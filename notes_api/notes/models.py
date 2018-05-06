@@ -3,6 +3,7 @@ import uuid
 from django.db import models
 from django.urls import reverse
 from django.utils.safestring import mark_safe
+from markdownx.models import MarkdownxField
 
 
 class Tag(models.Model):
@@ -31,7 +32,7 @@ class Note(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200, blank=True, null=True)
-    content = models.TextField(blank=True, null=True)
+    content = MarkdownxField(blank=True, null=True)
     tags = models.ManyToManyField(Tag,
                                   related_name='notes',
                                   through='NoteTag',

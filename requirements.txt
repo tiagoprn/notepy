@@ -3,4 +3,7 @@ django-reversion
 django-markdownx
 djangorestframework
 django-admin-rangefilter
+bpython
+pudb
+pygments
 
