@@ -6,4 +6,5 @@ django-admin-rangefilter
 bpython
 pudb
 pygments
-
+jupyter
+django-extensions

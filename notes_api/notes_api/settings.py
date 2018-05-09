@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rangefilter',
     'reversion',
+    'django_extensions',
     'rest_framework',
     'markdownx',
     'notes.apps.NotesConfig'

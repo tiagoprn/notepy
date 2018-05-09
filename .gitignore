@@ -1,4 +1,6 @@
 static/
+tmp/
 __pycache__
 .idea/**
 *.sqlite3
+.ipynb_checkpoints
