@@ -36,5 +36,5 @@ class NoteAdmin(VersionAdminWithOwnerAutofill, MarkdownxModelAdmin):
     inlines = [NoteTagInline, ]
 
     list_display = ['name', 'display_tags', 'uuid', 'created', 'private']
-    list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
+    list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), 'private')
     search_fields = ('uuid', 'created', 'name', 'content', 'private', 'tags__name', )
