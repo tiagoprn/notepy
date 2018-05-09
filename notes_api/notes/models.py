@@ -33,6 +33,7 @@ class Note(models.Model):
     updated = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     content = MarkdownxField(blank=True, null=True)
+    private = models.BooleanField(default=True)
     tags = models.ManyToManyField(Tag,
                                   related_name='notes',
                                   through='NoteTag',
