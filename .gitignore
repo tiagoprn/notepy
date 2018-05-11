@@ -1,4 +1,5 @@
 static/
+input/
 tmp/
 __pycache__
 .idea/**
