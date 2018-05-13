@@ -1,0 +1,21 @@
+version: '2'
+services:
+  postgresql:
+    image: postgres:latest
+    container_name: postgres-notepy
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    volumes:
+      - "./shared:/shared"
+      - "./utils:/utils"
+      - PG_NOTEPY_DATA:/var/lib/postgresql
+      - PG_NOTEPY_BACKUPS:/backups
+      - "/etc/localtime:/etc/localtime"
+    env_file: 
+      - postgres.env    
+volumes:
+  PG_NOTEPY_DATA:
+    driver: local
+  PG_NOTEPY_BACKUPS:
+    driver: local
