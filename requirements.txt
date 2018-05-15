@@ -8,3 +8,4 @@ pudb
 pygments
 jupyter
 django-extensions
+psycopg2
