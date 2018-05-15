@@ -4,6 +4,7 @@
 - Dockerize the app, create a docker compose changing the database to postgres (the docker compose file was already created.)
 
 - Find a way to run this SQL statements on the postgresql database: 
+(/storage/src/devops/docker_composes/postgres and https://stackoverflow.com/questions/19674456/run-postgresql-queries-from-the-command-line)
 ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
 ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
 ALTER ROLE myprojectuser SET timezone TO 'UTC';
