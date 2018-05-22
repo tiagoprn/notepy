@@ -15,7 +15,7 @@ class Tag(models.Model):
                             editable=False)
     owner = models.ForeignKey('auth.User', related_name='tags',
                               on_delete=models.CASCADE)
-    created = models.DateTimeField(editable=False)
+    created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     name = models.CharField(max_length=200)
 
@@ -30,15 +30,16 @@ class Tag(models.Model):
     def save(self, *args, **kwargs):
         """
         On save, update timestamps.
-        
+
         It is not considered a good practice to use auto_now and auto_now_add
         anymore, since both stop you from manually setting the value of these
         fields when, e.g., you're manually importing data from another source.
         """
+        import ipdb; ipdb.set_trace()
         if not self.id and not self.created:
             self.created = timezone.now()
-        if not self.modified:
-            self.modified = timezone.now()
+        if not self.updated:
+            self.updated = timezone.now()
         return super().save(*args, **kwargs)
 
 

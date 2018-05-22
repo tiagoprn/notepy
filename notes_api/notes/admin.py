@@ -24,7 +24,7 @@ class VersionAdminWithOwnerAutofill(VersionAdmin):
 class TagAdmin(VersionAdminWithOwnerAutofill):
     list_per_page = 10
 
-    list_display = ['name', 'uuid', 'created']
+    list_display = ['name', 'uuid', 'created', 'updated']
     list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), )
     search_fields = ('uuid', 'created', 'name', )
 
@@ -35,6 +35,6 @@ class NoteAdmin(VersionAdminWithOwnerAutofill, MarkdownxModelAdmin):
 
     inlines = [NoteTagInline, ]
 
-    list_display = ['name', 'display_tags', 'uuid', 'created', 'private']
+    list_display = ['name', 'display_tags', 'uuid', 'created', 'updated', 'private']
     list_filter = ('created', ('created', DateRangeFilter), 'updated', ('updated', DateRangeFilter), 'private')
     search_fields = ('uuid', 'created', 'name', 'content', 'private', 'tags__name', )
