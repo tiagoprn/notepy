@@ -7,8 +7,8 @@ help:
 	@echo -e " make backup   - Make a backup of postgresql data."
 	@echo -e " make restore  - Restore to the most recent database backup."
 	@echo -e " make stop     - Stop the container."
-	@echo -e " make remove   - Remove (delete) the container."
-	@echo -e " make start    - Start the container. If there is another instance of it running, it will be killed and removed first."
+	@echo -e " make remove   - CAUTION: Remove (delete) the container and the PG_DATA container (the BACKUPS volume will remain)."
+	@echo -e " make start    - Start the container."
 	@echo -e " make setupdb  - Setup database credentials and default encoding to be ready for a django app."
 
 env:
@@ -29,10 +29,11 @@ restore: env
 stop: 
 	sudo docker-compose stop 
 
-remove: stop
+remove: backup stop
 	sudo docker-compose rm -f
+	sudo docker volume rm postgres_PG_NOTEPY_DATA
 
-start: remove 
+start: 
 	sudo docker-compose up -d
 	@echo -e "IMPORTANT: If this is the first time you start this container, run: \n    $ make setupdb"
 
