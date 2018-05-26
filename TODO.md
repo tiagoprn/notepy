@@ -1,2 +1,3 @@
-- Change django admin url from /admin to another one.
-- Deploy on DigitalOcean on a new postgres dedicated instance, supporting docker volumes for easy backup - and use HTTPS on the admin site.
+- `settings.py`: Fazer a SECRET_KEY ser lida de variável de ambiente, bem como as configurações do postgresql.
+- limpar a base de dados e rodar a migração do dokuwiki novamente com a nova secret_key.  
+- gerar uma imagem docker do projeto. 
