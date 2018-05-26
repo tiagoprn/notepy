@@ -1,3 +1,2 @@
 - Change django admin url from /admin to another one.
-- Update README.md
 - Deploy on DigitalOcean on a new postgres dedicated instance, supporting docker volumes for easy backup - and use HTTPS on the admin site.

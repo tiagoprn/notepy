@@ -7,8 +7,8 @@ help:
 	@echo "static_server: this will run python's http server to serve the static files"
 	@echo 'run: run the app'
 	@echo 'urls: list all app available URLs.'
-	@echo 'shell_bpython: get a bpython shell into the django app, auto-importing its models (django shell_plus)'
-	@echo 'shell_notebook: get a jupyter notebook shell into the django app, auto-importing its models (django shell_plus)'
+	@echo 'shell: get a bpython shell into the django app, auto-importing its models (django shell_plus)'
+	@echo 'notebook: get a jupyter notebook shell into the django app, auto-importing its models (django shell_plus)'
 
 create_migrations:
 	python manage.py makemigrations notes
@@ -34,10 +34,10 @@ run: migrate
 urls:
 	python manage.py show_urls
 
-shell_bpython:
-	python manage.py shell_plus --bpython
+shell:
+	python manage.py shell_plus --ipython
 
-shell_notebook:
+notebook:
 	@echo 'IPython Notebooks can be updated (while running) to reflect changes in a Django application’s code with the menu command Kernel > Restart.'
 	@echo 'HAVE FUN!'
 	python manage.py shell_plus --notebook
