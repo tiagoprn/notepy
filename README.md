@@ -34,7 +34,7 @@ like applying migrations, start a shell etc. Run `make` to see all available com
 ### Database: run the migrations and create the django admin superuser
 - `$ cd notes_api`
 - `$ make migrate`
-- `$ make su` 
+- `$ make su` (this user/password are the ones you will use to login on the django admin site)
 
 
 ### Start the static server (to serve the django admin assets)
@@ -46,3 +46,9 @@ like applying migrations, start a shell etc. Run `make` to see all available com
 - `$ make run`
 
 *NOTE: Run `make` to see the help with other useful commands.*
+
+### Open django admin in your browser to interact with your notes: 
+
+[django admin url](http://localhost:8000/admin)
+
+Now you should login with the user/password you entered on `make su`. Now you can create your notes. Have fun!
