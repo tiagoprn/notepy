@@ -12,7 +12,7 @@ services:
       - PG_NOTEPY_DATA:/var/lib/postgresql
       - PG_NOTEPY_BACKUPS:/backups
     env_file: 
-      - postgres.env    
+      - ../../notepy.env    
 volumes:
   PG_NOTEPY_DATA:
     driver: local

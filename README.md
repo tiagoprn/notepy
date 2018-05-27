@@ -6,6 +6,8 @@ Created based on this recipe: https://github.com/tiagoprn/experiments/tree/maste
 
 ## Architecture
 
+IMPORTANT: Python 3 only supported.
+
 This is basically a CRUD, where we have notes that can have tags (or not). Due to its simplicity, I have enabled django 
 admin so you can create, update, retrieve and delete notes/tags from there. 
 
@@ -17,6 +19,8 @@ The django app is called `notes_api`. Inside it you will find a `Makefile` usefu
 like applying migrations, start a shell etc. Run `make` to see all available commands. 
 
 ## How to run locally
+
+### TODO: Create the environment variables for postgres and notepy
 
 ### Start the postgresql container and create the database
 - make sure you have `docker-compose` installed (if not, install through your distro's package manager.)
