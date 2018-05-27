@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w%ipql4)w_jhnf9ohj5w$5%444fl=d#k5xqiue)3i3l4#1l)@m'
+SECRET_KEY = os.environ['NOTEPY_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -94,11 +94,11 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'notepy',
-        'USER': 'notepy',
-        'PASSWORD': '12345678',
-        'HOST': 'localhost',
-        'PORT': '',  # will use the default here
+        'NAME': os.environ['POSTGRES_DB'],
+        'USER': os.environ['POSTGRES_USER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'HOST': os.environ['POSTGRES_HOST'],
+        'PORT': int(os.environ['POSTGRES_PORT']),
     }
 }
 
