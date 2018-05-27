@@ -25,13 +25,15 @@ like applying migrations, start a shell etc. Run `make` to see all available com
 - `$ pip install -r requirements.txt`
 
 
-### TODO: Create the environment variables that will feed the sample docker container and the app: 
+### Create the environment variables that will feed the sample docker container and the app: 
 
 - `$ ./generate_env.sh`  # this will generate a `notepy.env` file with the environment variables to be set. 
-- `$ cat notepy.env`  # if you want to check the environment variables values
 - `$ source notepy.env`  # to load the environment variables into the shell. 
 
-IMPORTANT: This has to be done MANUALLY, because on a Makefile e.g. it does not keep the context.
+**IMPORTANT**: 
+- This has to be done MANUALLY, because on a Makefile e.g. it does not keep the context.
+- If you wish to keep the file with the environment variables (if you run `generate_env.sh` again 
+it will overrite its contents), you can do that encrypting this file to somewhere safe to you. :) 
 
 ### Start the postgresql container and create the database
 - make sure you have `docker-compose` installed (if not, install through your distro's package manager.)
