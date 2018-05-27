@@ -11,7 +11,10 @@ help:
 	@echo -e " make start    - Start the container."
 	@echo -e " make setupdb  - Setup database credentials and default encoding to be ready for a django app."
 
-env:
+generate-env:
+	echo 'TODO'
+
+env: generate-env
 	source postgres.env
 
 bash:
