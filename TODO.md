@@ -1,3 +1,3 @@
-- `settings.py`: Fazer a SECRET_KEY ser lida de variável de ambiente, bem como as configurações do postgresql.
+- usar a lib `decouple` para ler as variáveis de ambiente do arquivo `notepy.env`
 - limpar a base de dados e rodar a migração do dokuwiki novamente com a nova secret_key.  
 - gerar uma imagem docker do projeto. 
