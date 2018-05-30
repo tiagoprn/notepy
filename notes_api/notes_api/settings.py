@@ -13,17 +13,21 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import logging
 import os
 
+from decouple import Config, RepositoryEnv
 from django.utils.log import DEFAULT_LOGGING
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# Sets the environment file used by decouple to load the Configuration
+keypath = os.path.join(os.path.dirname(BASE_DIR), 'notepy.env')
+config = Config(RepositoryEnv(keypath))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['NOTEPY_SECRET_KEY']
+SECRET_KEY = config('NOTEPY_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -94,11 +98,11 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['POSTGRES_DB'],
-        'USER': os.environ['POSTGRES_USER'],
-        'PASSWORD': os.environ['PGPASSWORD'],
-        'HOST': os.environ['POSTGRES_HOST'],
-        'PORT': int(os.environ['POSTGRES_PORT']),
+        'NAME': config('POSTGRES_DB'),
+        'USER': config('POSTGRES_USER'),
+        'PASSWORD': config('PGPASSWORD'),
+        'HOST': config('POSTGRES_HOST'),
+        'PORT': config('POSTGRES_PORT', cast=int),
     }
 }
 

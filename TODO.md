@@ -1,3 +1,3 @@
-- usar a lib `decouple` para ler as variáveis de ambiente do arquivo `notepy.env`
 - limpar a base de dados e rodar a migração do dokuwiki novamente com a nova secret_key.  
 - gerar uma imagem docker do projeto. 
+- tox para rodar os testes.
