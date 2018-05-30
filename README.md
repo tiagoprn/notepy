@@ -63,4 +63,4 @@ it will overrite its contents), you can do that encrypting this file to somewher
 
 [django admin url](http://localhost:8000/admin)
 
-Now you should login with the user/password you entered on `make su`. Now you can create your notes. Have fun!
+Now you should login with the user/password you entered on `make su`. Have fun!
