@@ -1,3 +1,3 @@
-- limpar a base de dados e rodar a migração do dokuwiki novamente com a nova secret_key.  
+## FUTURE (MEDIUM-LONG TERM)  
 - gerar uma imagem docker do projeto. 
 - tox para rodar os testes.
