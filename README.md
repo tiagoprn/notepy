@@ -1,6 +1,6 @@
 # notepy 
 
-Personal notes accessible from Django Admin, with versioning and markdown support. Soon there will also be a Rest API. 
+Personal notes accessible from Django Admin, with versioning and markdown support. 
 
 Created based on this recipe: https://github.com/tiagoprn/experiments/tree/master/django/drf_book
 

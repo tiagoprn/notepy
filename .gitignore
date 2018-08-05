@@ -1,6 +1,7 @@
 static/
 input/
 tmp/
+docker/postgres/shared/
 __pycache__
 .idea/**
 *.sqlite3

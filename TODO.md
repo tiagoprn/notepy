@@ -1,3 +1,4 @@
 ## FUTURE (MEDIUM-LONG TERM)  
-- gerar uma imagem docker do projeto. 
-- tox para rodar os testes.
+- script to build a docker image
+- REST API using django-rest-framework
+- add tests
