@@ -1,7 +1,8 @@
 ## NEXT
 - most recent backup of the dokuwiki database, already cleaned up, is at
   docker/postgres/shared (notepy.c.backup). 
-- create dockerized deploys and test them locally:
+- create dockerized deploys and test them locally and on the kvm that is on
+  this host:
     - script to build a docker image (example at
       /storage/temp/storage/backups/20180804.2001.20 - sif)
     - use traefik to route traffic to the container (user self-signed
