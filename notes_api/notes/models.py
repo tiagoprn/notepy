@@ -45,7 +45,7 @@ class Tag(models.Model):
 
 @reversion.register()
 class Note(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4(),
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,
                             editable=False)
     owner = models.ForeignKey('auth.User', related_name='notes',
                               on_delete=models.CASCADE)
