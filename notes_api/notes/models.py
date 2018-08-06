@@ -11,7 +11,7 @@ from markdownx.models import MarkdownxField
 
 @reversion.register()
 class Tag(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4(),
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,
                             editable=False)
     owner = models.ForeignKey('auth.User', related_name='tags',
                               on_delete=models.CASCADE)
@@ -45,7 +45,7 @@ class Tag(models.Model):
 
 @reversion.register()
 class Note(models.Model):
-    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,  # default here must be a callback - without the ()
                             editable=False)
     owner = models.ForeignKey('auth.User', related_name='notes',
                               on_delete=models.CASCADE)
@@ -90,7 +90,7 @@ class Note(models.Model):
 @reversion.register()
 class NoteTag(models.Model):
     uuid = models.UUIDField(primary_key=True,
-                            default=uuid.uuid4(),
+                            default=uuid.uuid4,
                             editable=False)
     note = models.ForeignKey(Note, on_delete=models.CASCADE)
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
