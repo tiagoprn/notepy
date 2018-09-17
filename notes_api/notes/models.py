@@ -35,7 +35,6 @@ class Tag(models.Model):
         anymore, since both stop you from manually setting the value of these
         fields when, e.g., you're manually importing data from another source.
         """
-        import ipdb; ipdb.set_trace()
         if not self.id and not self.created:
             self.created = timezone.now()
         if not self.updated:
