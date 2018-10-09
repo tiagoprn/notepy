@@ -1,6 +1,7 @@
 static/
 input/
 tmp/
+backups/
 docker/postgres/shared/
 __pycache__
 .idea/**
