@@ -1,7 +1,8 @@
 #!/bin/bash
+set -x
 
-HOST="localhost"
-PORT=5432
+source ../../notepy.env
+
 FORMAT="c"
 BACKUPS_ROOT="/backups"
 DUMPS_PATH="$BACKUPS_ROOT/all"
@@ -13,7 +14,7 @@ printf "When prompted, type PASSWORD: ${PGPASSWORD}\n"
 mkdir -p $DUMPS_PATH
 
 # Makes the backup
-pg_dump --host $HOST --port $PORT --username $POSTGRES_USER --role $POSTGRES_USER --format $FORMAT --verbose --file $FILE $POSTGRES_DB
+PGPASSWORD="$PGPASSWORD" pg_dump --host $POSTGRES_HOST --port $POSTGRES_PORT --username $POSTGRES_USER --role $POSTGRES_USER --format $FORMAT --verbose --file $FILE $POSTGRES_DB
 
 # Uncompress the backup
 tar cfzv $FILE.$UNIX_TIMESTAMP.tar.gz $FILE
