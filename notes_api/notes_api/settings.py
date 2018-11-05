@@ -34,7 +34,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -94,6 +93,12 @@ MARKDOWNX_MARKDOWN_EXTENSIONS = [
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+
+print('Checking postgres connection environment variables...BEGIN')
+for param in os.environ.keys():
+    if param.startswith('POSTGRES') or param.startswith('PG'):
+        print(f'{param}: {os.environ[param]} ')
+print('Checking postgres connection environment variables...END')
 
 DATABASES = {
     'default': {

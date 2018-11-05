@@ -1,3 +1,8 @@
+.EXPORT_ALL_VARIABLES:
+SHELL=/bin/bash
+ENV_FILE=../notepy.env
+SET_VARIABLES=set -a && source ${ENV_FILE} && set +a &&
+
 help:
 	@echo 'create_migrations: create new migrations'
 	@echo 'migrate: apply migrations'
@@ -10,34 +15,35 @@ help:
 	@echo 'shell: get a bpython shell into the django app, auto-importing its models (django shell_plus)'
 	@echo 'notebook: get a jupyter notebook shell into the django app, auto-importing its models (django shell_plus)'
 
+
 create_migrations:
-	python manage.py makemigrations notes
+	bash -c "${SET_VARIABLES} python manage.py makemigrations notes"
 
 migrate:
-	python manage.py migrate
+	bash -c "${SET_VARIABLES} python manage.py migrate"
 
 versionate:
-	python manage.py createinitialrevisions
+	bash -c "${SET_VARIABLES} python manage.py createinitialrevisions"
 
 su: migrate
-	python manage.py createsuperuser
+	bash -c "${SET_VARIABLES} python manage.py createsuperuser"
 
 process_static:
 	python manage.py collectstatic
-	
-static_server:	
-	cd static && python -m http.server 8088 & 
-	
-run: migrate	
-	python manage.py runserver
+
+static_server:
+	cd static && python -m http.server 8088 &
+
+run: migrate
+	bash -c "${SET_VARIABLES} python manage.py runserver"
 
 urls:
 	python manage.py show_urls
 
 shell:
-	python manage.py shell_plus --ipython
+	bash -c "${SET_VARIABLES} python manage.py shell_plus --ipython"
 
 notebook:
 	@echo 'IPython Notebooks can be updated (while running) to reflect changes in a Django application’s code with the menu command Kernel > Restart.'
 	@echo 'HAVE FUN!'
-	python manage.py shell_plus --notebook
+	bash -c "${SET_VARIABLES} python manage.py shell_plus --notebook"
