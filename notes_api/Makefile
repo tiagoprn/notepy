@@ -34,7 +34,8 @@ process_static:
 static_server:
 	cd static && python -m http.server 8088 &
 
-run: migrate
+run: static_server migrate
+	@echo '>>>>>>>>>>>> Visit http://localhost:8000/admin/ to use Django Admin to manage your notes. <<<<<<<<<<<<'
 	bash -c "${SET_VARIABLES} python manage.py runserver"
 
 urls:
