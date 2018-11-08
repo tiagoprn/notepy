@@ -17,16 +17,16 @@ help:
 
 
 create_migrations:
-	bash -c "${SET_VARIABLES} python manage.py makemigrations notes"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py makemigrations notes"
 
 migrate:
-	bash -c "${SET_VARIABLES} python manage.py migrate"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py migrate"
 
 versionate:
-	bash -c "${SET_VARIABLES} python manage.py createinitialrevisions"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py createinitialrevisions"
 
 su: migrate
-	bash -c "${SET_VARIABLES} python manage.py createsuperuser"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py createsuperuser"
 
 process_static:
 	python manage.py collectstatic
@@ -36,15 +36,15 @@ static_server:
 
 run: static_server migrate
 	@echo '>>>>>>>>>>>> Visit http://localhost:8000/admin/ to use Django Admin to manage your notes. <<<<<<<<<<<<'
-	bash -c "${SET_VARIABLES} python manage.py runserver"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py runserver"
 
 urls:
-	python manage.py show_urls
+	cd notes_api && python manage.py show_urls
 
 shell:
-	bash -c "${SET_VARIABLES} python manage.py shell_plus --ipython"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py shell_plus --ipython"
 
 notebook:
 	@echo 'IPython Notebooks can be updated (while running) to reflect changes in a Django application’s code with the menu command Kernel > Restart.'
 	@echo 'HAVE FUN!'
-	bash -c "${SET_VARIABLES} python manage.py shell_plus --notebook"
+	cd notes_api && bash -c "${SET_VARIABLES} python manage.py shell_plus --notebook"
